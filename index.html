@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Generator</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 border-b bg-white">
+        <div class="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-6">
+            <h1 class="text-xl font-bold">
+               Invoice Generator
+            </h1>
+
+            <div class="flex items-center gap-3">
+                <button class="rounded-lg border px-4 py-2 text-sm font-medium hover:bg-gray-50">
+                    Reset
+                </button>
+
+                <button class="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white hover:bg-gray-600">
+                    Download PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="mx-auto max-w-screen-2xl p-6">
+
+        <div class="grid gap-6 lg:grid-cols-[3fr_7fr]">
+
+            <!-- Left Panel -->
+            <aside class="space-y-6">
+
+                <div class="rounded-xl bg-white p-6 shadow-sm">
+                    <h2 class="mb-4 text-lg font-semibold">
+                        Company Information
+                    </h2>
+                    
+                    <div class="space-y-2">
+                        <div>
+                            <label class="mb-2 block text-sm font-medium">
+                                Company Logo
+                            </label>
+
+                            <input
+                                type="file"
+                                id="company-logo-input"
+                                accept="image/*"
+                                class="block w-full rounded-lg border border-gray-300 file:mr-4 file:border-0 file:bg-black file:px-4 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-gray-600">
+                        </div>
+                        
+                        <div class="grid gap-2 sm:grid-cols-2">
+                            <input
+                            type="text"
+                            placeholder="Company Name"
+                            data-preview="company-name"
+                            class="w-full rounded-lg border px-3 py-2 col-span-2">
+                            <input
+                                type="text"
+                                placeholder="GST Number"
+                                data-preview="company-gst"
+                                class="w-full rounded-lg border px-3 py-2">
+                            
+                            <input
+                                type="text"
+                                placeholder="PAN"
+                                data-preview="company-pan"
+                                class="w-full rounded-lg border px-3 py-2">
+
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                data-preview="company-email"
+                                class="w-full rounded-lg border px-3 py-2">
+
+                            <input
+                                type="text"
+                                placeholder="Phone"
+                                data-preview="company-phone"
+                                class="w-full rounded-lg border px-3 py-2">
+                             <textarea
+                                rows="4"
+                                placeholder="Company Address"
+                                data-preview="company-address"
+                                class="w-full rounded-lg border px-3 py-2 col-span-2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 rounded-xl bg-white p-6 shadow-sm space-y-2">
+                    <h2 class="mb-4 text-lg font-semibold col-span-2" >
+                        Invoice Information
+                    </h2>
+                    <div class="col-span-2">
+                        <label class="mb-2 block text-sm font-medium">
+                            Invoice Number
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="INV-000001"
+                            data-preview="invoice-number"
+                            class="w-full rounded-lg border px-3 py-2">
+                    </div>
+
+                    <div>
+                        <label class="mb-2 block text-sm font-medium">
+                            Order Number
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="#1001"
+                            data-preview="order-number"
+                            class="w-full rounded-lg border px-3 py-2">
+                    </div>
+
+                    <div>
+                        <label class="mb-2 block text-sm font-medium">
+                            Invoice Date
+                        </label>
+                        <input
+                            type="date"
+                            data-preview="invoice-date"
+                            class="w-full rounded-lg border px-3 py-2">
+                    </div>
+
+                    <div>
+                        <label class="mb-2 block text-sm font-medium">
+                            Payment Method
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Cash on Delivery"
+                            data-preview="payment-method"
+                            class="w-full rounded-lg border px-3 py-2">
+                    </div>
+                    <div>
+                        <label class="mb-2 block text-sm font-medium">
+                            Transaction ID
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Transaction ID"
+                            data-preview="transaction-id"
+                            class="w-full rounded-lg border px-3 py-2">
+                    </div>
+                </div>
+
+                <div class="rounded-xl bg-white p-6 shadow-sm space-y-2">
+                    <h2 class="mb-4 text-lg font-semibold">
+                        Customer Information
+                    </h2>
+                    <div class="grid gap-2 sm:grid-cols-2">
+                        <input
+                            id="customer-name-input"
+                            type="text"
+                            placeholder="Customer Name"
+                            data-preview="customer-name"
+                            class="w-full rounded-lg border px-3 py-2 col-span-2">
+                        <input
+                            id="customer-phone-input"
+                            type="text"
+                            placeholder="Phone Number"
+                            data-preview="customer-phone"
+                            class="w-full rounded-lg border px-3 py-2">
+                        <input
+                            type="email"
+                            placeholder="Email Address"
+                            data-preview="customer-email"
+                            class="w-full rounded-lg border px-3 py-2">
+                        <textarea
+                            id="customer-address-input"
+                            rows="4"
+                            placeholder="Billing Address"
+                            data-preview="customer-address"
+                            class="w-full rounded-lg border px-3 py-2 col-span-2"></textarea>
+                    </div>
+                    <div class="grid gap-2 sm:grid-cols-2">
+                        <div>
+                            <label class="flex items-center gap-2">
+                                <input
+                                    type="checkbox"
+                                    id="same-as-billing"
+                                    class="rounded border-gray-300">
+
+                                <span class="text-sm">
+                                    Same as Billing
+                                </span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="flex items-center gap-2">
+                                <input
+                                    type="checkbox"
+                                    id="show-shipping-info"
+                                    class="rounded border-gray-300">
+
+                                <span class="text-sm">
+                                    Show Shipping Info
+                                </span>
+                            </label>
+                        </div>
+                        <div class="col-span-full">
+                            <label class="mb-2 block text-sm font-medium">
+                                Shipping Address
+                            </label>
+
+                            <textarea
+                                id="shipping-address-input"
+                                rows="4"
+                                placeholder="Shipping Address"
+                                data-preview="shipping-address"
+                                class="w-full rounded-lg border px-3 py-2"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="mb-2 block text-sm font-medium">
+                                Shipping Name
+                            </label>
+                            <input
+                                id="shipping-name-input"
+                                placeholder="Shipping Name"
+                                data-preview="shipping-name"
+                                class="w-full rounded-lg border px-3 py-2">
+                        </div>
+                        <div>
+                            <label class="mb-2 block text-sm font-medium">
+                                Shipping Phone
+                            </label>
+                            <input
+                                id="shipping-phone-input"
+                                placeholder="Shipping Phone"
+                                data-preview="shipping-phone"
+                                class="w-full rounded-lg border px-3 py-2">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-xl bg-white p-6 shadow-sm">
+                    <h2 class="mb-4 text-lg font-semibold">
+                        Invoice Items
+                    </h2>
+
+                    <button class="rounded-lg bg-black px-4 py-2 text-white">
+                        + Add Item
+                    </button>
+                </div>
+
+            </aside>
+
+            <!-- Right Panel -->
+            <section class="lg:sticky lg:top-24">
+
+                <div class="overflow-auto rounded-xl bg-gray-300 p-8">
+
+                    <!-- A4 -->
+                    <div
+                        id="invoice-preview"
+                        class="mx-auto min-h-[1123px] w-[794px] bg-white p-10 shadow-2xl">
+                        <!-- Invoice Header -->
+                        <div class="border-b pb-6">
+
+                            <div class="flex items-start justify-between">
+
+                                <!-- Company -->
+                                <div class="grid grid-cols-1 gap-4">
+                                    <div>
+                                        <img
+                                            id="company-logo"
+                                            class="h-20 w-auto object-contain"
+                                            src="https://placehold.co/160x60?text=LOGO"
+                                            alt="Logo">
+                                    </div>
+                                    <div>
+                                    
+                                        <h2
+                                            id="company-name"
+                                            class="text-2xl font-bold">
+                                            Company Name
+                                        </h2>
+
+                                        <p id="company-address" class="mt-2 text-sm text-gray-600 whitespace-pre-line">
+                                            Company Address
+                                        </p>
+
+                                        <div class="mt-3 space-y-1 text-sm">
+
+                                            <p id="company-gst-row">
+                                                <span class="font-medium">GSTIN:</span>
+                                                <span id="company-gst">GST Number</span>
+                                            </p>
+                                            <p id="company-pan-row">
+                                                <span class="font-medium">PAN:</span>
+                                                <span id="company-pan">PAN</span>
+                                            </p>
+                                            <p>
+                                                <span class="font-medium">Phone:</span>
+                                                <span id="company-phone">Phone Number</span>
+                                            </p>
+
+                                            <p>
+                                                <span class="font-medium">Email:</span>
+                                                <span id="company-email">Email Address</span>
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Invoice -->
+                                <div class="text-right">
+
+                                    <h1 class="text-3xl font-bold uppercase">
+                                        Tax Invoice
+                                    </h1>
+
+                                    <table class="mt-6 ml-auto text-sm">
+
+                                        <tbody>
+
+                                            <tr>
+                                                <td class="px-3 py-1 font-medium">Invoice #</td>
+                                                <td id="invoice-number" class="px-3 py-1">
+                                                    INV-000001
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="px-3 py-1 font-medium">Order #</td>
+                                                <td id="order-number" class="px-3 py-1">
+                                                    #1001
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="px-3 py-1 font-medium">Invoice Date</td>
+                                                <td id="invoice-date" class="px-3 py-1">
+                                                    2026-07-27
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="px-3 py-1 font-medium">Payment Method</td>
+                                                <td id="payment-method" class="px-3 py-1">
+                                                    Cash on Delivery
+                                                </td>
+                                            </tr>
+
+                                            <tr id="transaction-id-row">
+                                                <td class="px-3 py-1 font-medium">Transaction ID</td>
+                                                <td id="transaction-id" class="px-3 py-1">
+                                                    TXN-123
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Customer -->
+                        <div class="grid grid-cols-2 gap-10 py-8 border-b">
+
+                            <!-- Bill To -->
+                            <div>
+
+                                <h3 class="mb-3 text-xs font-semibold uppercase tracking-widest text-gray-500" id="billing-header">
+                                    Bill To
+                                </h3>
+
+                                <div class="space-y-1 text-sm">
+
+                                    <p id="customer-name" class="text-lg font-semibold">
+                                        Customer Name
+                                    </p>
+
+                                    <p id="customer-address">
+                                        Billing Address
+                                    </p>
+
+                                    <p>
+                                        <span class="font-medium">Phone:</span>
+                                        <span id="customer-phone">Phone Number</span>
+                                    </p>
+
+                                    <p>
+                                        <span class="font-medium">Email:</span>
+                                        <span id="customer-email">Email Address</span>
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <!-- Ship To -->
+                            <div  id="shipping-info-section">
+
+                                <h3 class="mb-3 text-xs font-semibold uppercase tracking-widest text-gray-500">
+                                Ship To
+                                </h3>
+
+                                <div class="space-y-1 text-sm">
+
+                                    <p id="shipping-name" class="text-lg font-semibold">
+                                        Customer Name
+                                    </p>
+
+                                    <p id="shipping-address">
+                                        Shipping Address
+                                    </p>
+
+                                    <p>
+                                        <span class="font-medium">Phone:</span>
+                                        <span id="shipping-phone">Phone Number</span>
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mt-10 rounded-lg border p-8 text-center text-gray-400">
+                            Live Invoice Preview
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+<!-- Vendor Libraries -->
+<script src="assets/vendor/jspdf.umd.min.js"></script>
+<script src="assets/vendor/html2canvas.min.js"></script>
+<script src="assets/vendor/Sortable.min.js"></script>
+
+<!-- Application Scripts -->
+<script src="assets/js/app.js"></script>
+</body>
+</html>

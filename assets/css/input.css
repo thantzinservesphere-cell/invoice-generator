@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* Custom styles below */
+
+@theme {
+  --font-sans: Inter, system-ui, sans-serif;
+}

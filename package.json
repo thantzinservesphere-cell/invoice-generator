@@ -1,0 +1,26 @@
+{
+  "name": "invoice-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/style.css --watch",
+    "build": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/style.css --minify",
+    "copy-vendor": "copyfiles -u 3 node_modules/jspdf/dist/jspdf.umd.min.js assets/vendor && copyfiles -u 3 node_modules/html2canvas/dist/html2canvas.min.js assets/vendor && copyfiles -u 2 node_modules/sortablejs/Sortable.min.js assets/vendor"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.1",
+    "sortablejs": "^1.15.7",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1"
+  }
+}
