@@ -244,10 +244,18 @@
                         Invoice Items
                     </h2>
 
-                    <button class="rounded-lg bg-black px-4 py-2 text-white">
-                        + Add Item
+                    <div id="products-list">
+                        <!-- dynamically added product items -->
+                    </div>
+
+                    <button
+                        id="add-product"
+                        class="mt-4 rounded-lg bg-black px-4 py-2 text-white hover:bg-gray-300"
+                        onclick="addProduct()">
+                        + Add Product
                     </button>
                 </div>
+                
 
             </aside>
 
@@ -430,8 +438,48 @@
 
                         </div>
 
-                        <div class="mt-10 rounded-lg border p-8 text-center text-gray-400">
-                            Live Invoice Preview
+                        <div class="mt-8">
+
+                            <table class="w-full border border-gray-300 text-sm">
+
+                                <thead class="bg-gray-900">
+
+                                    <tr class="text-white text-center">
+
+                                        <th class="border border-gray-300 px-4 py-3 font-semibold" width="50%">
+                                            Product
+                                        </th>
+
+                                        <th class="border border-gray-300 px-4 py-3 font-semibold" width="5%">
+                                            Qty
+                                        </th>
+
+                                        <th class="border border-gray-300 px-4 py-3 font-semibold" width="10%">
+                                            Taxable
+                                        </th>
+
+                                        <th class="border border-gray-300 px-4 py-3 font-semibold" width="10%">
+                                            GST%
+                                        </th>
+
+                                        <th class="border border-gray-300 px-4 py-3 font-semibold" width="10%">
+                                            GST
+                                        </th>
+
+                                        <th class="border border-gray-300 px-4 py-3 font-semibold" width="10%">
+                                            Amount
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+                                <tbody id="invoice-items">
+                                    <!-- dynamically added products items -->
+                                </tbody>
+
+                            </table>
+
                         </div>
 
                     </div>
@@ -450,5 +498,6 @@
 
 <!-- Application Scripts -->
 <script src="assets/js/app.js"></script>
+<script src="assets/js/product-editor.js"></script>
 </body>
 </html>
